@@ -1,0 +1,42 @@
+﻿@page "/attendances"
+    @using Microsoft.AspNetCore.Components
+<PageTitle>Départements</PageTitle>
+
+
+<h3>Liste des Présence</h3>
+
+@if (Attendances != null && Attendances.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Attendance ID</th>
+                <th>Employee ID</th>
+                <th>Arrival Date</th>
+                <th>Departure Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attendance in Attendances)
+            {
+                <tr>
+                    <td>@attendance.Attendanceid</td>
+                    <td>@attendance.EmployeeId</td>
+                    <td>@attendance.Arrivaldate</td>
+                    <td>@attendance.Departuredate</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="@(() => EditAttendance(attendance.Attendanceid))">Modifier</button>
+                        <button class="btn btn-danger" @onclick="@(() => DeleteAttendance(attendance.Attendanceid))">Supprimer</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button class="btn btn-success" @onclick="GoToCreateAttandance">Ajouter une présence</button>
+
+}
+else
+{
+    <p>Aucune donnée de présence disponible.</p>
+}

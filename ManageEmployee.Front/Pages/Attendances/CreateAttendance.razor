@@ -1,0 +1,24 @@
+﻿@page "/attendance/create"
+
+<h3>Créer une nouvelle présence</h3>
+
+@if (errorMessage != null)
+{
+    <p class="text-danger">@errorMessage</p>
+}
+
+<form @onsubmit="Create">
+    <div class="mb-3">
+        <label for="employeeId" class="form-label">ID de l'employé</label>
+        <input type="number" class="form-control" id="employeeId" @bind="newAttendance.Employeeid">
+    </div>
+    <div class="mb-3">
+        <label for="arrivalDate" class="form-label">Date d'arrivée</label>
+        <input type="datetime-local" class="form-control" id="arrivalDate" @bind="newAttendance.Arrivaldate">
+    </div>
+    <div class="mb-3">
+        <label for="departureDate" class="form-label">Date de départ</label>
+        <input type="datetime-local" class="form-control" id="departureDate" @bind="newAttendance.Departuredate">
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>

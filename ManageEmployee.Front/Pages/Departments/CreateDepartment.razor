@@ -1,0 +1,25 @@
+﻿@page "/departments/create"
+
+<h3>Créer un nouveau département</h3>
+
+@if (errorMessage != null)
+{
+    <p class="text-danger">@errorMessage</p>
+}
+
+<form @onsubmit="Create">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="name" @bind="newDepartment.Name">
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" @bind="newDepartment.Description">
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Adresse</label>
+        <input type="text" class="form-control" id="address" @bind="newDepartment.Address">
+    </div>
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>
+

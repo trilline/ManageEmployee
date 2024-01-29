@@ -1,0 +1,40 @@
+﻿@page "/employees/edit/{employeeId}"
+@using ManageEmployee.Models.Entities
+@using System.Net.Http.Json
+
+<h3>Édition de l'employé</h3>
+
+@if (employee != null)
+{
+    <form @onsubmit="SubmitForm">
+        <div class="mb-3">
+            <label for="firstname" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="firstname" @bind-value="employee.Firstname">
+        </div>
+        <div class="mb-3">
+            <label for="lastname" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="lastname" @bind-value="employee.Lastname">
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Date de naissance</label>
+            <input type="date" class="form-control" id="birthday" @bind-value="employee.Birthday">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" @bind-value="employee.Email">
+        </div>
+        <div class="mb-3">
+            <label for="phonenumber" class="form-label">Numéro de téléphone</label>
+            <input type="text" class="form-control" id="phonenumber" @bind-value="employee.Phonenumber">
+        </div>
+        <div class="mb-3">
+            <label for="position" class="form-label">Poste</label>
+            <input type="text" class="form-control" id="position" @bind-value="employee.Position">
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+}
+else
+{
+    <p>Chargement en cours...</p>
+}

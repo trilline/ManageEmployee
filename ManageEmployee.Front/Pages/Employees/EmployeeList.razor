@@ -1,0 +1,48 @@
+﻿@page "/employees"
+@using ManageEmployee.Models.Entities
+@using System.Net.Http.Json
+
+<h3>Liste des employés</h3>
+
+@if (employees == null)
+{
+    <p>Chargement en cours...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>Email</th>
+                <th>Numéro de téléphone</th>
+                <th>Poste</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+                <tr>
+                    <td>@employee.Employeeid</td>
+                    <td>@employee.Firstname</td>
+                    <td>@employee.Lastname</td>
+                    <td>@employee.Birthday?.ToString("dd/MM/yyyy")</td>
+                    <td>@employee.Email</td>
+                    <td>@employee.Phonenumber</td>
+                    <td>@employee.Position</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditEmployee(employee.Employeeid)">Modifier</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteEmployee(employee.Employeeid)">Supprimer</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<button class="btn btn-success" @onclick="AddEmployee">Ajouter un employé</button>
+

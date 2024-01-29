@@ -1,0 +1,27 @@
+﻿
+@page "/departments/edit"
+<h3>Edit Department</h3>
+
+@if (departmentToEdit != null)
+{
+    <form @onsubmit="SubmitForm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" @bind-value="departmentToEdit.Name">
+        </div>
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" @bind-value="departmentToEdit.Description"  />    
+        </div>
+        <div>
+            <label for="Address" class="form-label">Adresse</label>
+            <input type="text" class="form-control" id="Address" @bind-value="departmentToEdit.Address"  />
+        </div>
+        <!-- Ajoutez ici d'autres champs du formulaire pour les autres propriétés du département à éditer -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
+else
+{
+    <p>No department selected for editing.</p>
+}

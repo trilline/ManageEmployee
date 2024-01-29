@@ -1,0 +1,26 @@
+﻿@page "/Attendance/edit"
+
+<h3>Modification d'une présence'</h3>
+
+@if (AttendanceToEdit != null)
+{
+    <form @onsubmit="SubmitForm">
+        <div class="mb-3">
+            <label for="employeeId" class="form-label">Employee ID</label>
+            <input type="number" class="form-control" id="employeeId" @bind-value="AttendanceToEdit.Employeeid">
+        </div>
+        <div class="mb-3">
+            <label for="arrivalDate" class="form-label">Arrival Date</label>
+            <input type="datetime-local" class="form-control" id="arrivalDate" @bind-value="AttendanceToEdit.Arrivaldate">
+        </div>
+        <div class="mb-3">
+            <label for="departureDate" class="form-label">Departure Date</label>
+            <input type="datetime-local" class="form-control" id="departureDate" @bind-value="AttendanceToEdit.Departuredate">
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+}
+else
+{
+    <p>Aucune donnée d'assiduité disponible pour l'édition.</p>
+}
